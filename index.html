@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رياضيات الأستاذ بومعزة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; font-family: 'Cairo', sans-serif; margin: 0; padding: 0; }
+        body { background-color: #F5F6FA; color: #333; padding-bottom: 30px; }
+        header { background-color: #3F51B5; color: white; text-align: center; padding: 18px; font-size: 20px; font-weight: bold; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        .sub-title { font-size: 15px; color: #666; margin-bottom: 15px; font-weight: 600; }
+        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 5px rgba(0,0,0,0.05); cursor: pointer; transition: transform 0.2s; }
+        .card:hover { transform: translateY(-2px); }
+        .card-icon { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-left: 15px; }
+        .card-info { flex-grow: 1; }
+        .card-title { font-size: 17px; font-weight: bold; color: #3F51B5; }
+        .card-sub { font-size: 13px; color: #777; margin-top: 3px; }
+        .arrow { color: #aaa; font-size: 18px; }
+        .btn-back { background: #e0e0e0; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-bottom: 15px; }
+        .pdf-icon { background-color: #ffebee; color: #e53935; }
+        .btn-download { background: #3F51B5; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 13px; text-decoration: none; }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<header id="app-header">اختر مستواك الدراسي</header>
+
+<div class="container">
+    <!-- شاشة 1: اختيار المستوى -->
+    <div id="screen-levels">
+        <p class="sub-title">أهلاً بك بني التلميذ، حدد مستواك للولوج إلى الدروس والتمارين:</p>
+        <div id="levels-list"></div>
+    </div>
+
+    <!-- شاشة 2: اختيار الأقسام -->
+    <div id="screen-categories" class="hidden">
+        <button class="btn-back" onclick="showLevels()">➔ العودة للمستويات</button>
+        <p class="sub-title">اختر القسم المطلوب:</p>
+        <div id="categories-list"></div>
+    </div>
+
+    <!-- شاشة 3: عرض ملفات الـ PDF -->
+    <div id="screen-pdfs" class="hidden">
+        <button class="btn-back" onclick="showCategories()">➔ العودة للأقسام</button>
+        <p class="sub-title" id="pdf-subtitle">الملفات المتاحة:</p>
+        <div id="pdfs-list"></div>
+    </div>
+</div>
+
+<script>
+    const levels = [
+        { code: 'TCSF', name: 'جذع مشترك علمي (فرنسية)' },
+        { code: 'TCLF', name: 'جذع مشترك أدبي (فرنسية)' },
+        { code: '1BACSF', name: 'الأولى باكالوريا علوم تجريبية' },
+        { code: '1BACL', name: 'الأولى باكالوريا آداب وعلوم إنسانية' },
+        { code: '2BACSF', name: 'الثانية باكالوريا علوم فزيائية' },
+        { code: '2BACSMF', name: 'الثانية باكالوريا علوم رياضية (فرنسية)' },
+        { code: '2BACLF', name: 'الثانية باكالوريا آداب وعلوم (فرنسية)' }
+    ];
+
+    const categories = [
+        { title: 'الدروس', sub: 'ملفات الشرح وملخصات القواعد', icon: '📚', bg: '#e3f2fd', color: '#1976d2' },
+        { title: 'التمارين', sub: 'سلاسل التمارين مع الحلول المقترحة', icon: '📝', bg: '#fff3e0', color: '#f57c00' },
+        { title: 'الفروض المنزلية', sub: 'أنشطة وواجبات منزلية أسبوعية', icon: '🏠', bg: '#e8f5e9', color: '#388e3c' },
+        { title: 'الفروض المحروسة', sub: 'نماذج الامتحانات والفروض المراقبة', icon: '📋', bg: '#ffebee', color: '#d32f2f' }
+    ];
+
+    // ضع روابط Google Drive الخاصة بملفاتك هنا مستقبلاً
+    const samplePdfs = [
+        { title: 'الدرس الأول: العموميات حول الدوال العددية', date: '2026-10-15', size: '2.4 MB', url: '#' },
+        { title: 'سلسلة التمارين رقم 01 - مع الحلول', date: '2026-10-18', size: '1.8 MB', url: '#' }
+    ];
+
+    let currentLevel = '';
+    let currentCategory = '';
+
+    function init() {
+        const list = document.getElementById('levels-list');
+        list.innerHTML = '';
+        levels.forEach(lvl => {
+            list.innerHTML += `
+                <div class="card" onclick="selectLevel('${lvl.code}')">
+                    <div class="card-icon" style="background: #e8eaf6; color: #3f51b5;">🎓</div>
+                    <div class="card-info">
+                        <div class="card-title">${lvl.code}</div>
+                        <div class="card-sub">${lvl.name}</div>
+                    </div>
+                    <div class="arrow">❮</div>
+                </div>`;
+        });
+    }
+
+    function selectLevel(code) {
+        currentLevel = code;
+        document.getElementById('app-header').innerText = 'المستوى: ' + code;
+        document.getElementById('screen-levels').classList.add('hidden');
+        document.getElementById('screen-categories').classList.remove('hidden');
+
+        const list = document.getElementById('categories-list');
+        list.innerHTML = '';
+        categories.forEach(cat => {
+            list.innerHTML += `
+                <div class="card" onclick="selectCategory('${cat.title}')">
+                    <div class="card-icon" style="background: ${cat.bg}; color: ${cat.color};">${cat.icon}</div>
+                    <div class="card-info">
+                        <div class="card-title" style="color: #333;">${cat.title}</div>
+                        <div class="card-sub">${cat.sub}</div>
+                    </div>
+                    <div class="arrow">❮</div>
+                </div>`;
+        });
+    }
+
+    function selectCategory(title) {
+        currentCategory = title;
+        document.getElementById('screen-categories').classList.add('hidden');
+        document.getElementById('screen-pdfs').classList.remove('hidden');
+        document.getElementById('pdf-subtitle').innerText = title + ' - ' + currentLevel;
+
+        const list = document.getElementById('pdfs-list');
+        list.innerHTML = '';
+        samplePdfs.forEach(pdf => {
+            list.innerHTML += `
+                <div class="card">
+                    <div class="card-icon pdf-icon">📄</div>
+                    <div class="card-info">
+                        <div class="card-title" style="font-size: 15px; color:#333;">${pdf.title}</div>
+                        <div class="card-sub">التاريخ: ${pdf.date} | الحجم: ${pdf.size}</div>
+                    </div>
+                    <a href="${pdf.url}" target="_blank" class="btn-download">تحميل PDF</a>
+                </div>`;
+        });
+    }
+
+    function showLevels() {
+        document.getElementById('app-header').innerText = 'اختر مستواك الدراسي';
+        document.getElementById('screen-categories').classList.add('hidden');
+        document.getElementById('screen-levels').classList.remove('hidden');
+    }
+
+    function showCategories() {
+        document.getElementById('screen-pdfs').classList.add('hidden');
+        document.getElementById('screen-categories').classList.remove('hidden');
+    }
+
+    init();
+</script>
+
+</body>
+</html>
