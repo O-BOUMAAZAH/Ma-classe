@@ -7,47 +7,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
-        body { background-color: #F4F7FE; color: #2B3674; padding: 20px 10px; display: flex; justify-content: center; }
+        body { background-color: #F0F4F9; color: #2B3674; padding: 20px 10px; display: flex; justify-content: center; }
         .app-container { width: 100%; max-width: 520px; background: #FFFFFF; border-radius: 24px; padding: 30px 24px; box-shadow: 0px 10px 30px rgba(112, 144, 176, 0.12); }
         
-        /* Header section */
-        .logo-box { width: 80px; height: 80px; background: #F4F7FE; border-radius: 18px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 36px; border: 1px solid #E9EDF7; }
+        .logo-box { width: 80px; height: 80px; background: #EBF3FE; border-radius: 18px; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 36px; border: 1px solid #D8E5FE; }
         .main-title { font-size: 22px; font-weight: 700; color: #1B2559; text-align: center; margin-bottom: 4px; }
-        .sub-title { font-size: 14px; font-weight: 500; color: #4318FF; text-align: center; margin-bottom: 4px; }
-        .slogan { font-size: 13px; color: #A3AED0; text-align: center; margin-bottom: 24px; }
-        .divider { height: 1px; background: #E9EDF7; margin-bottom: 24px; }
+        .sub-title { font-size: 14px; font-weight: 600; color: #2563EB; text-align: center; margin-bottom: 4px; }
+        .slogan { font-size: 13px; color: #64748B; text-align: center; margin-bottom: 24px; }
+        .divider { height: 1px; background: #E2E8F0; margin-bottom: 24px; }
         
         .welcome-title { font-size: 18px; font-weight: 700; color: #1B2559; text-align: center; margin-bottom: 8px; }
-        .welcome-desc { font-size: 13px; color: #707EAE; text-align: center; margin-bottom: 24px; line-height: 1.5; }
+        .welcome-desc { font-size: 13px; color: #64748B; text-align: center; margin-bottom: 24px; line-height: 1.5; }
         
-        /* Level option cards */
-        .level-card { border: 1.5px solid #E9EDF7; border-radius: 16px; padding: 16px 20px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.2s ease; background: #fff; }
-        .level-card:hover, .level-card.selected { border-color: #4318FF; background: #F8F9FF; }
-        .level-info { display: flex; flex-direction: column; align-items: flex-end; text-align: right; }
-        .level-name { font-size: 16px; font-weight: 700; color: #1B2559; }
-        .level-sub { font-size: 12px; color: #A3AED0; margin-top: 2px; }
-        .level-icon { width: 36px; height: 36px; border-radius: 10px; background: #F4F7FE; display: flex; align-items: center; justify-content: center; font-size: 18px; color: #4318FF; }
-        .arrow-icon { color: #A3AED0; font-size: 16px; }
+        /* البطاقة العامة */
+        .level-card { border: 1.5px solid #E2E8F0; border-radius: 16px; padding: 16px 20px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: all 0.25 ease; background: #fff; text-align: left; }
+        .level-card:hover { transform: translateY(-2px); box-shadow: 0px 4px 12px rgba(0,0,0,0.05); }
 
-        /* Action button */
-        .btn-start { width: 100%; background: #2461E4; color: white; border: none; border-radius: 14px; padding: 16px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; transition: background 0.2s; text-align: center; }
-        .btn-start:hover { background: #1B4DBA; }
+        /* ألوان خاصة بالبطاقات */
+        .card-college { border-left: 5px solid #1E88E5; }
+        .card-college:hover { background: #F0F7FF; border-color: #1E88E5; }
+        .card-college .level-icon { background: #E3F2FD; color: #1E88E5; }
 
-        .btn-back { background: #F4F7FE; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 600; color: #2B3674; cursor: pointer; margin-bottom: 20px; display: inline-block; font-size: 14px; }
+        .card-lycee { border-left: 5px solid #7C4DFF; }
+        .card-lycee:hover { background: #F5F0FF; border-color: #7C4DFF; }
+        .card-lycee .level-icon { background: #EDE7F6; color: #7C4DFF; }
+
+        .vip-card { border: 2px solid #FFD54F; border-left: 5px solid #FFB300; background: #FFFDF0; }
+        .vip-card:hover { background: #FFF9C4; border-color: #FFA000; }
+        .vip-card .level-icon { background: #FFF8E1; color: #FFB300; }
+
+        .card-content { display: flex; align-items: center; gap: 14px; width: 100%; }
+        .level-info { display: flex; flex-direction: column; align-items: flex-start; text-align: left; width: 100%; }
+        .level-name { font-size: 15px; font-weight: 700; color: #1E293B; text-align: left; line-height: 1.4; }
+        .level-sub { font-size: 12px; color: #64748B; margin-top: 2px; text-align: left; }
+        
+        .level-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+        .arrow-icon { color: #94A3B8; font-size: 18px; font-weight: bold; flex-shrink: 0; margin-left: 10px; }
+
+        .btn-back { background: #F1F5F9; border: none; padding: 10px 18px; border-radius: 12px; font-weight: 600; color: #334155; cursor: pointer; margin-bottom: 20px; font-size: 14px; }
         .hidden { display: none; }
         
-        /* List Items */
-        .item-card { border: 1px solid #E9EDF7; border-radius: 14px; padding: 14px 18px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; background: #fff; }
-        .item-title { font-size: 15px; font-weight: 600; color: #1B2559; }
-        .item-sub { font-size: 12px; color: #A3AED0; }
-        .btn-download { background: #4318FF; color: white; border: none; padding: 8px 14px; border-radius: 8px; font-size: 12px; font-weight: 600; text-decoration: none; }
+        .input-code { width: 100%; padding: 14px; border-radius: 12px; border: 1.5px solid #CBD5E1; font-size: 16px; text-align: center; margin-bottom: 12px; outline: none; }
+        .btn-unlock { width: 100%; background: #FFB300; color: #1E293B; border: none; padding: 14px; border-radius: 12px; font-size: 15px; font-weight: 700; cursor: pointer; margin-bottom: 16px; }
+        .bank-info-box { background: #F8FAFC; border: 1.5px dashed #2563EB; border-radius: 12px; padding: 16px; margin-bottom: 16px; text-align: left; font-size: 13px; color: #1E293B; line-height: 1.6; }
+        .whatsapp-btn { display: block; text-align: center; background: #25D366; color: white; padding: 12px; border-radius: 12px; font-weight: 600; font-size: 14px; text-decoration: none; margin-top: 10px; }
+
+        /* بطاقات الملفات والدروس */
+        .item-card { border: 1px solid #E2E8F0; border-radius: 14px; padding: 14px 18px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; background: #fff; gap: 12px; }
+        .item-info { text-align: left; flex-grow: 1; }
+        .item-title { font-size: 14px; font-weight: 600; color: #1E293B; text-align: left; line-height: 1.4; }
+        .item-sub { font-size: 12px; color: #64748B; text-align: left; margin-top: 4px; }
+        .btn-download { background: #2563EB; color: white; border: none; padding: 10px 16px; border-radius: 10px; font-size: 12px; font-weight: 600; text-decoration: none; flex-shrink: 0; transition: background 0.2s; }
+        .btn-download:hover { background: #1D4ED8; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
 
-    <!-- الصفحة الأولى: الشاشة الرئيسية للترحيب واختيار السلك -->
+    <!-- الصفحة الرئيسية -->
     <div id="screen-welcome">
         <div class="logo-box">📖</div>
         <h1 class="main-title">Mes cours de maths</h1>
@@ -58,34 +76,94 @@
         <h2 class="welcome-title">Bienvenue !</h2>
         <p class="welcome-desc">Choisis ton niveau scolaire pour accéder aux cours, aux exercices et aux activités de soutien en mathématiques.</p>
 
-        <!-- خيار Collège -->
-        <div class="level-card" onclick="selectCycle('college')">
-            <span class="arrow-icon">›</span>
-            <div class="level-info">
-                <div style="display: flex; align-items: center; gap: 8px;">
+        <!-- Collège -->
+        <div class="level-card card-college" onclick="selectCycle('college')">
+            <div class="card-content">
+                <div class="level-icon">🎓</div>
+                <div class="level-info">
                     <span class="level-name">Collège</span>
-                    <div class="level-icon">🎓</div>
+                    <span class="level-sub">1AC · 2AC · 3AC</span>
                 </div>
-                <span class="level-sub">1AC · 2AC · 3AC</span>
             </div>
-        </div>
-
-        <!-- خيار Lycée -->
-        <div class="level-card" onclick="selectCycle('lycee')">
             <span class="arrow-icon">›</span>
-            <div class="level-info">
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span class="level-name">Lycée</span>
-                    <div class="level-icon">📚</div>
-                </div>
-                <span class="level-sub">Trunc commun · 1BAC · 2BAC</span>
-            </div>
         </div>
 
-        <button class="btn-start" onclick="selectCycle('lycee')">Commencer à apprendre</button>
+        <!-- Lycée qualifiant -->
+        <div class="level-card card-lycee" onclick="selectCycle('lycee')">
+            <div class="card-content">
+                <div class="level-icon">📚</div>
+                <div class="level-info">
+                    <span class="level-name">Lycée qualifiant</span>
+                    <span class="level-sub">TC · 1BAC · 2BAC</span>
+                </div>
+            </div>
+            <span class="arrow-icon">›</span>
+        </div>
+
+        <!-- Espace VIP -->
+        <div class="level-card vip-card" onclick="openVipLock()">
+            <div class="card-content">
+                <div class="level-icon">👑</div>
+                <div class="level-info">
+                    <span class="level-name" style="color: #B45309;">Espace VIP / Premium ⭐</span>
+                    <span class="level-sub" style="color: #D97706;">Soutien personnalisé & Fichiers exclusifs</span>
+                </div>
+            </div>
+            <span class="arrow-icon" style="color: #D97706;">🔒</span>
+        </div>
     </div>
 
-    <!-- الصفحة الثانية: اختيار المستوى الدراسي بالتفصيل -->
+    <!-- شاشة طلب القن السري لـ VIP -->
+    <div id="screen-vip-lock" class="hidden">
+        <button class="btn-back" onclick="showWelcome()">← Retour</button>
+        <h2 class="welcome-title">👑 Espace VIP / Premium</h2>
+        <p class="welcome-desc">Entrez votre code d'accès pour continuer :</p>
+        
+        <input type="password" id="vip-code-input" class="input-code" placeholder="Entrez le code d'accès...">
+        <button class="btn-unlock" onclick="checkVipCode()">Valider le code</button>
+
+        <a href="https://wa.me/212600000000?text=Bonjour%20Professeur,%20je%20souhaite%20obtenir%20le%20code%20d'accès%20pour%20l'Espace%20VIP." target="_blank" class="whatsapp-btn">
+            💬 Demander le code sur WhatsApp
+        </a>
+    </div>
+
+    <!-- شاشة الحساب البنكي والدروس الحصرية VIP -->
+    <div id="screen-vip-secret" class="hidden">
+        <button class="btn-back" onclick="showWelcome()">← Retour</button>
+        <h2 class="welcome-title" style="color: #B45309;">⭐ Espace VIP (Membre vérifié)</h2>
+        <p class="welcome-desc">Voici les informations bancaires et les fichiers exclusifs :</p>
+        
+        <div class="bank-info-box">
+            <strong>💳 Informations bancaires (RIB) :</strong><br>
+            Banque : <span>CIH Bank / Attijariwafa</span><br>
+            RIB : <span>230XXXXXXXXXXXXXXXXXX</span><br>
+            Nom : <span>Boumaazah</span>
+        </div>
+
+        <div class="level-card vip-card" onclick="selectVipContent('cours')">
+            <div class="card-content">
+                <div class="level-icon">📙</div>
+                <div class="level-info"><span class="level-name">Cours VIP</span><span class="level-sub">Cours exclusifs</span></div>
+            </div>
+            <span class="arrow-icon">›</span>
+        </div>
+        <div class="level-card vip-card" onclick="selectVipContent('exercices')">
+            <div class="card-content">
+                <div class="level-icon">📝</div>
+                <div class="level-info"><span class="level-name">Exercices VIP</span><span class="level-sub">Séries & Exercices VIP</span></div>
+            </div>
+            <span class="arrow-icon">›</span>
+        </div>
+        <div class="level-card vip-card" onclick="selectVipContent('devoirs')">
+            <div class="card-content">
+                <div class="level-icon">🏠</div>
+                <div class="level-info"><span class="level-name">Devoir maison VIP</span><span class="level-sub">Devoirs VIP</span></div>
+            </div>
+            <span class="arrow-icon">›</span>
+        </div>
+    </div>
+
+    <!-- شاشة اختيار المستويات -->
     <div id="screen-levels" class="hidden">
         <button class="btn-back" onclick="showWelcome()">← Retour</button>
         <h2 class="welcome-title" id="cycle-title">Choisis ta classe</h2>
@@ -93,17 +171,17 @@
         <div id="levels-list"></div>
     </div>
 
-    <!-- الصفحة الثالثة: اختيار القسم (الدروس، التمارين، ...) -->
+    <!-- شاشة الأقسام للمستوى المحدد -->
     <div id="screen-categories" class="hidden">
-        <button class="btn-back" onclick="showLevels()">← Retour aux niveaux</button>
+        <button class="btn-back" onclick="showLevels()">← Retour</button>
         <h2 class="welcome-title" id="selected-level-title">Niveau</h2>
         <br>
         <div id="categories-list"></div>
     </div>
 
-    <!-- الصفحة الرابعة: عرض وتحميل ملفات الـ PDF -->
+    <!-- شاشة عرض الملفات الخاصة بالمستوى -->
     <div id="screen-pdfs" class="hidden">
-        <button class="btn-back" onclick="showCategories()">← Retour aux rubriques</button>
+        <button class="btn-back" onclick="selectLevel(currentLevelKey)">← Retour</button>
         <h2 class="welcome-title" id="pdf-category-title">Documents</h2>
         <br>
         <div id="pdfs-list"></div>
@@ -112,40 +190,87 @@
 </div>
 
 <script>
-    const lyceeLevels = [
-        { code: 'TCSF', name: 'Tronc commun scientifique (BIOF)' },
-        { code: 'TCLF', name: 'Tronc commun littéraire' },
-        { code: '1BACSF', name: '1BAC Sciences Expérimentales' },
-        { code: '1BACL', name: '1BAC Lettres et Sc. Humaines' },
-        { code: '2BACSF', name: '2BAC Sciences Physiques / SVT' },
-        { code: '2BACSMF', name: '2BAC Sciences Mathématiques' },
-        { code: '2BACLF', name: '2BAC Lettres et Sc. Humaines' }
-    ];
-
     const collegeLevels = [
-        { code: '1AC', name: '1ère année Collège' },
-        { code: '2AC', name: '2ème année Collège' },
-        { code: '3AC', name: '3ème année Collège' }
+        { code: '1AC', name: '1. Première année du collège (1AC)' },
+        { code: '2AC', name: '2. Deuxième année du collège (2AC)' },
+        { code: '3AC', name: '3. Troisième année du collège (3AC)' }
     ];
 
-    const categories = [
-        { title: 'الدروس (Cours)', sub: 'ملفات الشرح وملخصات القواعد', icon: '📖' },
-        { title: 'التمارين (Exercices)', sub: 'سلاسل التمارين مع الحلول المقترحة', icon: '📝' },
-        { title: 'الفروض المنزلية (Devoirs à la maison)', sub: 'أنشطة وواجبات أسبوعية', icon: '🏠' },
-        { title: 'الفروض المحروسة (Devoirs surveillés)', sub: 'نماذج الامتحانات والفروض المراقبة', icon: '📋' }
+    const lyceeLevels = [
+        { code: 'TCSF', name: 'TC - Tronc commun scientifique' },
+        { code: 'TCLF', name: 'TC - Tronc commun lettres' },
+        { code: '1BACSEF', name: '1BAC - Sciences expérimentales' },
+        { code: '1BACSM', name: '1BAC - Sciences mathématiques' },
+        { code: '1BACL', name: '1BAC - Lettres et sc. humaines' },
+        { code: '2BACPC_SVT', name: '2BAC - Sciences PC et SVT' },
+        { code: '2BACSMA_B', name: '2BAC - Sciences mathématiques A et B' }
     ];
 
-    // ضع روابط Google Drive الخاصة بملفات الـ PDF هنا
-    const samplePdfs = [
-        { title: 'Généralités sur les fonctions - Cours', date: '2026-10-15', size: '2.4 MB', url: '#' },
-        { title: 'Série d\'exercices N°1 - Fonctions', date: '2026-10-18', size: '1.8 MB', url: '#' }
-    ];
+    const SECRET_VIP_CODE = "VIP2026";
+    let currentLevelKey = '';
 
-    let selectedLevel = '';
+    const dbData = {
+        '1AC': { cours: [], exercices: [], devoirs: [] },
+        '2AC': { cours: [], exercices: [], devoirs: [] },
+        '3AC': { cours: [], exercices: [], devoirs: [] },
+        'TCSF': {
+            cours: [
+                { title: 'Cours 1: Ensemble des nombres entiers naturels IN et Notions en Arithmétique', url: 'https://drive.google.com/file/d/1-zf9phSVXixHbDRyU2MouNQ0I9vY0bjd/view?usp=drive_link' },
+                { title: 'Cours 2: Les ensembles de nombres', url: '#' },
+                { title: 'Cours 3: Calcul vectoriel dans le plan', url: '#' }
+            ],
+            exercices: [{ title: 'Série 1: Arithmétique dans IN', url: '#' }],
+            devoirs: [{ title: 'Devoir maison N°1 - TCSF', url: '#' }]
+        },
+        'TCLF': { cours: [], exercices: [], devoirs: [] },
+        '1BACSEF': {
+            cours: [
+                { title: 'Cours 1: Notions en logique', url: 'https://drive.google.com/file/d/1a4pFJMj7XCGpe42opbGPmLvDSPwldslh/view?usp=drive_link' },
+                { title: 'Cours 2: Généralités sur les fonctions', url: '#' }
+            ],
+            exercices: [{ title: 'Série 1: Logique mathématique', url: '#' }],
+            devoirs: [{ title: 'Devoir maison N°1 - 1BAC SE', url: '#' }]
+        },
+        '1BACSM': { cours: [], exercices: [], devoirs: [] },
+        '1BACL': { cours: [], exercices: [], devoirs: [] },
+        '2BACPC_SVT': { cours: [], exercices: [], devoirs: [] },
+        '2BACSMA_B': { cours: [], exercices: [], devoirs: [] },
+        'VIP': {
+            cours: [{ title: 'Cours VIP 1: Résumé avancé et astuces de calcul', url: '#' }],
+            exercices: [{ title: 'Série VIP 1: Exercices corrigés étape par étape', url: '#' }],
+            devoirs: [{ title: 'Devoir VIP 1: Sujet corrigé avec détails', url: '#' }]
+        }
+    };
 
     function showWelcome() {
         hideAll();
         document.getElementById('screen-welcome').classList.remove('hidden');
+    }
+
+    function openVipLock() {
+        hideAll();
+        document.getElementById('screen-vip-lock').classList.remove('hidden');
+    }
+
+    function checkVipCode() {
+        const input = document.getElementById('vip-code-input').value;
+        if (input === SECRET_VIP_CODE) {
+            alert('Code valide ! Bienvenue dans l\'Espace VIP.');
+            hideAll();
+            document.getElementById('screen-vip-secret').classList.remove('hidden');
+        } else {
+            alert('Code incorrect ! Veuillez réessayer.');
+        }
+    }
+
+    function selectVipContent(type) {
+        currentLevelKey = 'VIP';
+        hideAll();
+        document.getElementById('screen-pdfs').classList.remove('hidden');
+        const titles = { cours: '📙 Cours VIP', exercices: '📝 Exercices VIP', devoirs: '🏠 Devoir maison VIP' };
+        document.getElementById('pdf-category-title').innerText = titles[type];
+
+        renderPdfList('VIP', type);
     }
 
     function selectCycle(cycle) {
@@ -155,16 +280,17 @@
         list.innerHTML = '';
 
         const currentLevels = (cycle === 'lycee') ? lyceeLevels : collegeLevels;
-        document.getElementById('cycle-title').innerText = (cycle === 'lycee') ? 'Lycée - Choisis ta classe' : 'Collège - Choisis ta classe';
+        const cardClass = (cycle === 'lycee') ? 'card-lycee' : 'card-college';
+        document.getElementById('cycle-title').innerText = (cycle === 'lycee') ? 'Lycée qualifiant' : 'Collège';
 
         currentLevels.forEach(lvl => {
             list.innerHTML += `
-                <div class="level-card" onclick="selectLevel('${lvl.code}')">
-                    <span class="arrow-icon">›</span>
-                    <div class="level-info">
-                        <span class="level-name">${lvl.code}</span>
-                        <span class="level-sub">${lvl.name}</span>
+                <div class="level-card ${cardClass}" onclick="selectLevel('${lvl.code}')">
+                    <div class="card-content">
+                        <div class="level-icon">📄</div>
+                        <div class="level-info"><span class="level-name">${lvl.name}</span></div>
                     </div>
+                    <span class="arrow-icon">›</span>
                 </div>`;
         });
     }
@@ -175,51 +301,69 @@
     }
 
     function selectLevel(code) {
-        selectedLevel = code;
+        currentLevelKey = code;
         hideAll();
         document.getElementById('screen-categories').classList.remove('hidden');
-        document.getElementById('selected-level-title').innerText = 'Niveau: ' + code;
+        document.getElementById('selected-level-title').innerText = 'Niveau : ' + code;
 
         const list = document.getElementById('categories-list');
-        list.innerHTML = '';
-        categories.forEach(cat => {
-            list.innerHTML += `
-                <div class="level-card" onclick="selectCategory('${cat.title}')">
-                    <span class="arrow-icon">›</span>
-                    <div class="level-info">
-                        <span class="level-name">${cat.title}</span>
-                        <span class="level-sub">${cat.sub}</span>
-                    </div>
-                </div>`;
-        });
+        list.innerHTML = `
+            <div class="level-card card-college" onclick="showPdfs('cours', '📙 Cours')">
+                <div class="card-content">
+                    <div class="level-icon">📙</div>
+                    <div class="level-info"><span class="level-name">Cours</span><span class="level-sub">Supports de cours et résumés</span></div>
+                </div>
+                <span class="arrow-icon">›</span>
+            </div>
+            <div class="level-card card-college" onclick="showPdfs('exercices', '📝 Exercices')">
+                <div class="card-content">
+                    <div class="level-icon">📝</div>
+                    <div class="level-info"><span class="level-name">Exercices</span><span class="level-sub">Séries d'exercices corrigés</span></div>
+                </div>
+                <span class="arrow-icon">›</span>
+            </div>
+            <div class="level-card card-college" onclick="showPdfs('devoirs', '🏠 Devoir maison')">
+                <div class="card-content">
+                    <div class="level-icon">🏠</div>
+                    <div class="level-info"><span class="level-name">Devoir maison</span><span class="level-sub">Devoirs à la maison</span></div>
+                </div>
+                <span class="arrow-icon">›</span>
+            </div>`;
     }
 
-    function showCategories() {
-        hideAll();
-        document.getElementById('screen-categories').classList.remove('hidden');
-    }
-
-    function selectCategory(title) {
+    function showPdfs(categoryType, categoryTitle) {
         hideAll();
         document.getElementById('screen-pdfs').classList.remove('hidden');
-        document.getElementById('pdf-category-title').innerText = title;
+        document.getElementById('pdf-category-title').innerText = categoryTitle + ' - ' + currentLevelKey;
 
+        renderPdfList(currentLevelKey, categoryType);
+    }
+
+    function renderPdfList(level, categoryType) {
         const list = document.getElementById('pdfs-list');
         list.innerHTML = '';
-        samplePdfs.forEach(pdf => {
-            list.innerHTML += `
-                <div class="item-card">
-                    <a href="${pdf.url}" target="_blank" class="btn-download">Télécharger</a>
-                    <div style="text-align: right;">
-                        <div class="item-title">${pdf.title}</div>
-                        <div class="item-sub">${pdf.date} | ${pdf.size}</div>
-                    </div>
-                </div>`;
-        });
+
+        const items = dbData[level] && dbData[level][categoryType] ? dbData[level][categoryType] : [];
+        if (items.length > 0) {
+            items.forEach(item => {
+                list.innerHTML += `
+                    <div class="item-card">
+                        <div class="item-info">
+                            <div class="item-title">${item.title}</div>
+                            <div class="item-sub">PDF</div>
+                        </div>
+                        <a href="${item.url}" target="_blank" class="btn-download">Télécharger</a>
+                    </div>`;
+            });
+        } else {
+            list.innerHTML = `<p style="text-align:center; color:#64748B; padding: 20px;">Aucun document disponible pour le moment.</p>`;
+        }
     }
 
     function hideAll() {
         document.getElementById('screen-welcome').classList.add('hidden');
+        document.getElementById('screen-vip-lock').classList.add('hidden');
+        document.getElementById('screen-vip-secret').classList.add('hidden');
         document.getElementById('screen-levels').classList.add('hidden');
         document.getElementById('screen-categories').classList.add('hidden');
         document.getElementById('screen-pdfs').classList.add('hidden');
