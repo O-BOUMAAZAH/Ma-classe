@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes cours de maths - Prof Boumaazah</title>
+    <title>Mes cours de Maths - Prof Boumaazah</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; font-family: 'Poppins', sans-serif; margin: 0; padding: 0; }
@@ -69,12 +69,12 @@
     <div id="screen-welcome">
         <div class="logo-box">📖</div>
         <h1 class="main-title">Mes cours de maths</h1>
-        <p class="sub-title">avec le prof Boumaazah</p>
+        <p class="sub-title">avec le Prof Boumaazah</p>
         <p class="slogan">Comprends, pratique et progresse !</p>
         <div class="divider"></div>
 
         <h2 class="welcome-title">Bienvenue !</h2>
-        <p class="welcome-desc">Choisis ton niveau scolaire pour accéder aux cours, aux exercices et aux activités de soutien en mathématiques.</p>
+        <p class="welcome-desc">Choisis ton niveau scolaire pour accéder aux cours, aux exercices et aux activités de soutien en Mathématiques.</p>
 
         <!-- Collège -->
         <div class="level-card card-college" onclick="selectCycle('college')">
@@ -93,7 +93,7 @@
             <div class="card-content">
                 <div class="level-icon">📚</div>
                 <div class="level-info">
-                    <span class="level-name">Lycée qualifiant</span>
+                    <span class="level-name">Lycée Qualifiant</span>
                     <span class="level-sub">TC · 1BAC · 2BAC</span>
                 </div>
             </div>
@@ -135,7 +135,7 @@
         
         <div class="bank-info-box">
             <strong>💳 Informations bancaires (RIB) :</strong><br>
-            Banque : <span>CIH Bank / Attijariwafa</span><br>
+            Banque : <span> Bank</span><br>
             RIB : <span>230XXXXXXXXXXXXXXXXXX</span><br>
             Nom : <span>Boumaazah</span>
         </div>
@@ -204,6 +204,7 @@
         { code: '1BACL', name: '1BAC - Lettres et sc. humaines' },
         { code: '2BACPC_SVT', name: '2BAC - Sciences PC et SVT' },
         { code: '2BACSMA_B', name: '2BAC - Sciences mathématiques A et B' }
+        { code: '2BACLSH', name: '2BAC - Lettres et sc. humaines' },
     ];
 
     const SECRET_VIP_CODE = "VIP2026";
@@ -215,9 +216,9 @@
         '3AC': { cours: [], exercices: [], devoirs: [] },
         'TCSF': {
             cours: [
-                { title: 'Cours 1: Ensemble des nombres entiers naturels IN et Notions en Arithmétique', url: 'https://drive.google.com/file/d/1-zf9phSVXixHbDRyU2MouNQ0I9vY0bjd/view?usp=drive_link' },
-                { title: 'Cours 2: Les ensembles de nombres', url: '#' },
-                { title: 'Cours 3: Calcul vectoriel dans le plan', url: '#' }
+                { title: 'Cours 1: Ensemble des nombres IN et Notions en Arithmétique', url: 'https://drive.google.com/file/d/1-zf9phSVXixHbDRyU2MouNQ0I9vY0bjd/view?usp=drive_link' },
+                { title: 'Cours 2:Calcul vectoriel dans le Plan', url: 'https://drive.google.com/file/d/1hEm0XZ-CxKlZ6JqyfYUR6cSFWtZDdzDo/view?usp=drive_link' },
+                { title: 'Cours 3:Les ensembles de nombres ', url: '#' }
             ],
             exercices: [{ title: 'Série 1: Arithmétique dans IN', url: '#' }],
             devoirs: [{ title: 'Devoir maison N°1 - TCSF', url: '#' }]
@@ -225,16 +226,34 @@
         'TCLF': { cours: [], exercices: [], devoirs: [] },
         '1BACSEF': {
             cours: [
-                { title: 'Cours 1: Notions en logique', url: 'https://drive.google.com/file/d/1a4pFJMj7XCGpe42opbGPmLvDSPwldslh/view?usp=drive_link' },
-                { title: 'Cours 2: Généralités sur les fonctions', url: '#' }
+                { title: 'Cours 1: Notions de Logique', url: 'https://drive.google.com/file/d/1a4pFJMj7XCGpe42opbGPmLvDSPwldslh/view?usp=drive_link' },
+                { title: 'Cours 2: Généralités sur les fonctions Numériques', url: 'https://drive.google.com/file/d/1v4vUv7be3ecQhCvlevPGCwPfGNETe_UB/view?usp=drive_link' }
             ],
-            exercices: [{ title: 'Série 1: Logique mathématique', url: '#' }],
+            exercices: [
+                { title: 'Série 1:Notions de Logique', url: 'https://drive.google.com/file/d/1wbkkBeOOa0wvR54rcvXYHrQbEvLKEcYG/view?usp=drive_link' },
+                { title: 'Série 2: Généralités sur les fonctions Numériques', url: 'https://drive.google.com/file/d/17ZbZ5DgisO8dzctA26ww3eU8SHf-GZ6-/view?usp=sharing' },
+            ],
             devoirs: [{ title: 'Devoir maison N°1 - 1BAC SE', url: '#' }]
         },
         '1BACSM': { cours: [], exercices: [], devoirs: [] },
         '1BACL': { cours: [], exercices: [], devoirs: [] },
-        '2BACPC_SVT': { cours: [], exercices: [], devoirs: [] },
+        '2BACPC_SVT': {
+            cours: [{ title: 'Cours 1: Continuité d’une fonction Numérique', url: 'https://drive.google.com/file/d/140W1S5cQq7DaBp80JoKA6FK-yczAihK5/view?usp=drive_link' }, 
+                    { title: 'Cours 2: Dérivation – Etude de fonctions', url: 'https://drive.google.com/file/d/1QF02_5gtZmZOn7Qv0p7S2eEjXyofgWO_/view?usp=drive_link' }
+                   ],
+            exercices: [
+                { title: 'Série 1: Continuité d’une fonction Numérique', url: 'https://drive.google.com/file/d/1xjUcCxJYFedr0u6acKFw4qvo9xKDuEzU/view?usp=drive_link' },
+                { title: 'Série 2: Dérivation – Etude de fonctions', url: 'https://drive.google.com/file/d/1AMrxxbMrTCoJxxUjWvHCYuTnXmMqC4n4/view?usp=drive_link' },
+            ], 
+            devoirs: [] 
+        },
         '2BACSMA_B': { cours: [], exercices: [], devoirs: [] },
+        '2BACLSH': {
+            cours: [], 
+            exercices: [], 
+            devoirs: [{ title: ' Devoir Maison N 1', url: ' https://drive.google.com/file/d/1CFhEm8hNWb84mGmTdDdIFGFYO36PT2Hx/view?usp=drive_link' }] 
+        },
+       
         'VIP': {
             cours: [{ title: 'Cours VIP 1: Résumé avancé et astuces de calcul', url: '#' }],
             exercices: [{ title: 'Série VIP 1: Exercices corrigés étape par étape', url: '#' }],
@@ -281,7 +300,7 @@
 
         const currentLevels = (cycle === 'lycee') ? lyceeLevels : collegeLevels;
         const cardClass = (cycle === 'lycee') ? 'card-lycee' : 'card-college';
-        document.getElementById('cycle-title').innerText = (cycle === 'lycee') ? 'Lycée qualifiant' : 'Collège';
+        document.getElementById('cycle-title').innerText = (cycle === 'lycee') ? 'Lycée Qualifiant' : 'Collège';
 
         currentLevels.forEach(lvl => {
             list.innerHTML += `
@@ -322,7 +341,7 @@
                 </div>
                 <span class="arrow-icon">›</span>
             </div>
-            <div class="level-card card-college" onclick="showPdfs('devoirs', '🏠 Devoir maison')">
+            <div class="level-card card-college" onclick="showPdfs('devoirs', '🏠 Devoir Maison')">
                 <div class="card-content">
                     <div class="level-icon">🏠</div>
                     <div class="level-info"><span class="level-name">Devoir maison</span><span class="level-sub">Devoirs à la maison</span></div>
